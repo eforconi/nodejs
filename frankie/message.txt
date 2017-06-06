@@ -1,0 +1,1 @@
+[{"id":"a1732d1b-5e85-469f-887a-6fcaf9e8463d","name":"yakare","address":"1.2.3.4"},{"id":"ff3b34e5-0d94-4799-8163-96a69683d301","name":"kuntur","address":"1.1.1.1"},{"id":"525ba516-f89c-4fd2-a032-e27046103aff","name":"nahuel","address":"1.1.3.1"},{"id":"a05536a6-3765-4aaf-80bf-168e21205efc","name":"test","address":"http://localhost:4567/swagger"}]

@@ -1,0 +1,55 @@
+#tabDiv{
+
+    margin-left: 7%;
+    border-left-style: solid;
+    border-left-width: 1px;
+}
+
+#navDiv{
+	width: 150%;
+	margin-left: 3%;
+	display: none;
+}
+
+#leftColumnDiv{
+	margin-left: 7%;
+	margin-right: 3%;
+	width: 15%;
+    }
+
+#gralInfo{
+    margin-left: 3%;
+    border-bottom-color: black;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+#responseBox{
+	display: none;
+    background: lightgreen;
+    width: 190%;
+}
+
+#gralInfoTitle {
+    margin-left: 35%;
+}
+
+#paramsBox{
+	display: none;
+    width: 60%;
+}
+#leftContent{
+    width: 50%;
+}
+#rightContent{
+    width: 50%;
+}
+#responseValues{
+	width: 190%;
+}
+#requestContent{
+	width: 150%;
+}
+#paramsJsonEditor{
+	
+}

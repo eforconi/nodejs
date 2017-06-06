@@ -1,0 +1,171 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+<div layout="column">
+	<div id="gralInfo">
+		<h1 id="gralInfoTitle">{{vi.json.info.description}}</h1>
+		<h2>{{vi.json.info.title}}</h2>
+		<h3>{{vi.json.info.version}}</h3>
+		<md-select ng-model="vi.apiSelected" id="selectApi">
+            <md-option><em>None</em></md-option>
+            <md-option ng-repeat="(key,val) in vi.apiList" ng-click="vi.getNewApi(val.address)">
+              	{{val.name}}      	
+            </md-option>
+          </md-select>
+	</div>
+	<div layout="row">
+		<div layout="column" id="leftColumnDiv">
+			<h5 class="md-display-2">Tree</h5>
+			<div  id="tree">
+				<div
+				data-angular-treeview="true"
+				data-tree-id="abc"
+				data-tree-model="vi.printTree"
+				data-node-id="id"
+				data-node-label="label"
+				data-node-children="children"
+				 >
+			</div>
+			</div>
+			<div id="list">
+				<h5 class="md-display-2">List</h5>
+			</div>
+		</div>
+		<div ng-cloak id="tabDiv">
+			<div ng-repeat='(key,val) in vi.verbs' ng-click="vi.showFunction(key,val)" id="vervsList">
+				<div ng-switch="key">
+					<div ng-switch-when="post" id="verbPost">{{vi.capitalizeFirstLetter(key)}}</div>
+					<div ng-switch-when="get" id="verbGet">{{vi.capitalizeFirstLetter(key)}}</div>
+					<div ng-switch-when="put" id="verbPut">{{vi.capitalizeFirstLetter(key)}}</div>
+					<div ng-switch-when="delete" id="verbDelete">{{vi.capitalizeFirstLetter(key)}}</div>
+				</div>
+			</div>
+			<md-content class="md-padding" id="navDiv">
+				<md-nav-bar
+					md-selected-nav-item="currentNavItem"
+					nav-bar-aria-label="navigation links">
+					<md-nav-item md-nav-click="goto('page1')" name="page1" ng-click="vi.showFunctionInfo()">
+						Endpoint Info
+					</md-nav-item>
+					<md-nav-item md-nav-click="goto('page2')" name="page2" ng-click="vi.showFunctionResponses()">
+						Responses
+					</md-nav-item>
+					<md-nav-item md-nav-click="goto('page3')" name="page3" ng-click="vi.showFunctionTry()">
+						Try it out
+					</md-nav-item>
+				</md-nav-bar>
+			<div class="ext-content" layout=row>
+				<div id="leftContent">
+					<h2>{{vi.actualPath}}</h2>
+					<h2>{{vi.con}}</h2> 
+					<h5>{{vi.precon2}}{{vi.con2}}</h5>
+					<h5>{{vi.precon3}}{{vi.con3}}</h5>
+					<div ng-cloak layout-gt-sm="row" layout="column">
+						<div id="responsesDiv">		
+							<div flex-gt-sm="50" flex>
+								<md-toolbar layout="row" class="md-hue-3" id="responseBox">
+									<div class="md-toolbar-tools">
+										<span>{{vi.spanResponse}}</span>
+									</div>
+								</md-toolbar>
+								<md-content id="responseValues">
+									<md-list flex ng-repeat='res in vi.myResponses'>
+										<hr>
+										<h3 id="errorUnit" ng-click="vi.selectedResponse(res)">{{res}}</h3>
+									</md-list>
+								</md-content>
+							</div>
+						</div>	
+					</div>
+					<div id="requestDiv">
+						<div id="paramsBox">
+								<h4 class="md-flex">Request Params</h4>
+						</div>
+						<md-content flex layout-padding id="requestContent">
+							<div ng-repeat='req in vi.auxVal.parameters'> 	
+								<div ng-switch="req.in">
+									<!--Body-->
+									<div ng-switch-when="body" layout="row">
+										<div id="rightRequestParams">
+											<h6>Parameter: {{req.name}}</h6>
+											<div ng-if="req.required == true">
+												<textarea class="required" name="inputBodyRequest" id="text" rows="10" cols="20" placeholder="Required"></textarea>
+											</div>
+											<div ng-if="req.required == false">
+												<textarea name="inputBodyRequest" id="text" rows="10" cols="20" placeholder="Not required"></textarea>
+											</div>
+										</div>
+										<div id="leftRequestParams">
+											<h6>parameter type: {{req.in}} 	Data type: {{req.type}}</h6>
+											<angular-jsoneditor ng-model="vi.actualRef" id="paramsJsonEditor"></angular-jsoneditor>
+
+										</div>
+									</div>
+									<!--header-->
+									<div ng-switch-when="header" layout="row">
+										<div id="rightRequestParams">
+											<h6>Parameter: {{req.name}}</h6>
+											<div ng-if="req.required == true">
+												<textarea class="required" name="inputHeaderRequest" id="text" placeholder="Required">
+												</textarea>
+											</div>
+											<div ng-if="req.required == false">
+												<textarea name="inputHeaderRequest" id="text" placeholder="Not required"></textarea>
+											</div>
+										</div>
+										<div id="leftRequestParams">
+											<h6>parameter type: {{req.in}}</h6>
+											<h6>Data type: {{req.type}}</h6>
+										</div>
+									</div>
+									<!--Query-->
+									<div ng-switch-when="query" layout="row">
+										<div id="rightRequestParams">
+											<h6>Parameter: {{req.name}}</h6>
+											<div ng-if="req.required == true">
+												<textarea class="required" name="inputQueryRequest" id="text" placeholder="Required"></textarea>
+											</div>
+											<div ng-if="req.required == false">
+												<textarea name="inputQueryRequest" id="text" placeholder="Not required"></textarea>
+											</div>
+										</div>
+										<div id="leftRequestParams">
+											<h6>parameter type: {{req.in}}</h6>
+											<h6>Data type: {{req.type}}</h6>
+										</div>
+									</div>
+									<!--path-->
+									<div ng-switch-when="path" layout="row">
+										<div id="rightRequestParams">
+											<h6>Parameter: {{req.name}}</h6>
+											<div ng-if="req.required == true">
+												<textarea class="required" name="inputPathRequest" id="text" placeholder="Required"></textarea>
+											</div>
+											<div ng-if="req.required == false">
+												<textarea name="inputPathRequest" id="text" placeholder="Not required"></textarea>
+											</div>
+										</div>
+										<div id="leftRequestParams">
+											<h6>parameter type: {{req.in}}</h6>
+											<h6>Data type: {{req.type}}</h6>
+										</div>
+									</div>
+									<div ng-switch-default></div>
+								</div>
+							</div>	
+						</md-content>
+					</div>
+					<div>
+						<md-button class="md-raised md-primary">Try it out!</md-button>
+					</div>
+				</div>
+				<div id="rightContent">
+					<div layout="column" ng-cloak>
+						<div>{{vi.actualErrorCode.type}}</div>	
+					</div>
+				</div>
+			</div>
+			</md-content>
+		</div>
+	</div>
+</div>

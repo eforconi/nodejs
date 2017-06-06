@@ -1,0 +1,28 @@
+{
+  "name": "frankie",
+  "description": "",
+  "main": "App.js",
+  "authors": [
+    "eforconi <ejfor90@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^1.0.3",
+    "angular-aria": "^1.6.4",
+    "angular-animate": "^1.6.4",
+    "angular-material": "^1.1.4",
+    "jsoneditor": "5.6.0",
+    "angular-socket-io": "^0.7.0"
+  }
+}
