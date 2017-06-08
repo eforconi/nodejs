@@ -11,11 +11,15 @@
 	display: none;
 }
 
-#leftColumnDiv{
+.leftColumnDiv{
 	margin-left: 7%;
 	margin-right: 3%;
 	width: 15%;
     }
+.selectApi{
+    width: 20%;
+}
+
 
 #gralInfo{
     margin-left: 3%;

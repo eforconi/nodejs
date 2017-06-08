@@ -1,20 +1,24 @@
 <!doctype html>
 <meta charset="utf-8">
-<link rel="stylesheet" href="style.css">
-<div layout="column">
+<div layout="column" flex>
+<unc-toolbar text="Colegio Nacional de Monserrat - Información de estudiantes"></unc-toolbar>
 	<div id="gralInfo">
-		<h1 id="gralInfoTitle">{{vi.json.info.description}}</h1>
+		<h1 id="gralInfoTitle">UNC DOCUMENTATION API</h1>
+		<h2>{{vi.json.info.description}}</h2>
 		<h2>{{vi.json.info.title}}</h2>
 		<h3>{{vi.json.info.version}}</h3>
-		<md-select ng-model="vi.apiSelected" id="selectApi">
-            <md-option><em>None</em></md-option>
-            <md-option ng-repeat="(key,val) in vi.apiList" ng-click="vi.getNewApi(val.address)">
-              	{{val.name}}      	
-            </md-option>
-          </md-select>
+		<md-input-container>
+          	<label>APi</label>
+			<md-select ng-model="vi.apiSelected" class="selectApi">
+	            <md-option><em>None</em></md-option>
+	            <md-option ng-repeat="(key,val) in vi.apiList" ng-click="vi.getNewApi(val.address)">
+	              	{{val.name}}      	
+	            </md-option>
+	         </md-select>
+	    </md-input-container>
 	</div>
 	<div layout="row">
-		<div layout="column" id="leftColumnDiv">
+		<div layout="column" class="leftColumnDiv">
 			<h5 class="md-display-2">Tree</h5>
 			<div  id="tree">
 				<div

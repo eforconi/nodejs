@@ -2,6 +2,8 @@
   'use strict';
     angular.module('frankieModule', [
       'app.core',
-      'visual'
+      'visual',
+      'components'
+
     ]);
 }());

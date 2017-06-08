@@ -1,0 +1,79 @@
+<md-toolbar class="fixed-toolbar" md-whiteframe="2" >
+  <div class="md-toolbar-tools">
+    <md-button class="md-icon-button"  aria-label="GoBack" ng-click="vm.toggle()"><!--ng-disabled="!vm.back"-->
+      <md-icon class="material-icons">menu</md-icon>
+    </md-button>
+    <img style="width: 40px;margin-right: 2px;max-width: 40px;cursor:pointer;" src="/images/unc-logo.png" ui-sref="modules">
+    &nbsp;&nbsp;
+    <h2>
+      <span>{{vm.text}}</span>
+    </h2>
+    <span flex></span>
+
+
+    <!-- <md-button id="display-apps-button" class="md-icon-button" aria-label="Edit" ng-click='vm.showApps()'>
+      <md-icon id="apps-icon" class="material-icons">apps</md-icon>
+    </md-button> -->
+
+    <div id="apps-card" class="md-whiteframe-4dp" >
+      <div class="app-icon" ui-sref="modules">
+        <div class="icon-wrapper">
+          <md-icon class="material-icons">home</md-icon>
+        </div>
+        <div class="icon-footer" onclick="alert(this)">
+          Home
+        </div>
+      </div>
+      <div class="app-icon" ui-sref="students">
+        <div class="icon-wrapper">
+          <md-icon class="material-icons">face</md-icon>
+        </div>
+        <div class="icon-footer" onclick="alert(this)">
+          Alumnos
+        </div>
+      </div>
+      <div class="app-icon" ui-sref="guardians">
+        <div class="icon-wrapper">
+          <md-icon class="material-icons">supervisor_account</md-icon>
+        </div>
+        <div class="icon-footer">
+          Tutores
+        </div>
+      </div>
+      <div class="app-icon" ui-sref="enrollments">
+        <div class="icon-wrapper">
+          <md-icon class="material-icons">school</md-icon>
+        </div>
+        <div class="icon-footer">
+          Matriculación
+        </div>
+      </div>
+    </div>
+    <div id="arrow-up-apps"></div>
+
+    <div id='display-profile-button' class="session-button" layout='column' layout-align='center center' ng-click='vm.showProfile($event)'>
+      <div id='profile-icon' >{{vm.initialCapitalLetter}}</div>
+    </div>
+
+    <div id="profile-card" class="md-whiteframe-4dp">
+      <div class="profile-card-content" layout='row'>
+        <div class="profile-picture" flex='40'>
+          <div class="missing-picture">
+              <span>{{vm.initialCapitalLetter}}</span>
+          </div>
+        </div>
+        <div class="profile-description" flex='60'>
+          <span class="name">Nombre y Apellido{{vm.fullname}}</span>
+          <span class="identity">Datos Comdoc{{vm.description}}</span>
+          <!-- <a class="profile-button" ui-sref="profile">Mi Perfil</a> -->
+        </div>
+      </div>
+      <div class="profile-card-footer" layout="row"  layout-align="end center" ng-click="vm.closeSession()">
+              <!-- <md-button class="md-primary md-hue-1">Mi Perfil</md-button> -->
+              <a class="close-session" >Cerrar Sesión</a>
+      </div>
+    </div>
+    <div id="arrow-up-profile"></div>
+
+  </div>
+</md-toolbar>

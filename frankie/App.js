@@ -82,7 +82,6 @@ res.send("ale");
 app.get("/apis", function(req, res, next) {
   fs.readFile('message.txt', (err, data) => {
     if (err) throw err;
-    console.log(data);
     res.send(data);
   });
 });
@@ -94,7 +93,6 @@ app.post("/apis", function(req, res, next) {
 
   fs.readFile('message.txt','utf8', (err, data) => {
     if (err) throw err;
-    console.log(data);
     var fileJson=JSON.parse(data); //list of objects from file
     for(var i in fileJson){
       //compare if name exist

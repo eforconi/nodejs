@@ -1,0 +1,188 @@
+.fixed-toolbar {
+  height: 64px;
+  background-color: #B71C1C !important;
+  color: white !important;
+}
+.fixed-toolbar .session-button {
+  height: 32px;
+  width: 32px;
+  background-color: #d6ad79;
+  border-radius: 32px;
+  margin: 0px 4px;
+  transition: all .15s ease-out;
+  -moz-transition: all .15s ease-out;
+  -webkit-transition: all .15s ease-out;
+}
+.fixed-toolbar .session-button:hover {
+  cursor: pointer;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+}
+.fixed-toolbar .session-button:focus {
+  outline: none !important;
+}
+.fixed-toolbar button md-icon {
+  color: white;
+}
+.fixed-toolbar #apps-card, .fixed-toolbar #profile-card {
+  display: none;
+  width: 324px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 58px;
+  right: 24px;
+}
+.fixed-toolbar #apps-card {
+  width: 224px;
+  padding: 20px 12px;
+}
+.fixed-toolbar #apps-card .app-icon {
+  cursor: pointer;
+  display: inline-block;
+  width: 86px;
+  height: 100px;
+  margin: 0px 4px;
+  opacity: 0.78;
+  transition: all .15s ease-out;
+  -moz-transition: all .15s ease-out;
+  -webkit-transition: all .15s ease-out;
+}
+.fixed-toolbar #apps-card .app-icon .icon-wrapper {
+  height: 56px;
+}
+.fixed-toolbar #apps-card .app-icon md-icon {
+  color: #B71C1C;
+  font-size: 50px;
+  margin-left: 16px;
+  transition: all .15s ease-out;
+  -moz-transition: all .15s ease-out;
+  -webkit-transition: all .15s ease-out;
+}
+.fixed-toolbar #apps-card .app-icon .icon-footer {
+  margin-top: 5px;
+  color: #B71C1C;
+  text-align: center;
+  font-size: 10pt;
+}
+.fixed-toolbar #apps-card .app-icon:hover {
+  opacity: 1;
+  font-weight: bold;
+}
+.fixed-toolbar #apps-card .app-icon:hover md-icon {
+  font-size: 54px;
+}
+.fixed-toolbar #profile-icon {
+  font-size: large;
+  color: white;
+}
+.fixed-toolbar #arrow-up-apps, .fixed-toolbar #arrow-up-profile {
+  display: none;
+  width: 0px;
+  height: 0px;
+  border-bottom: 8px solid white;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  position: absolute;
+  z-index: 10;
+}
+.fixed-toolbar #arrow-up-apps {
+  top: 51px;
+  right: 74px;
+}
+.fixed-toolbar #arrow-up-profile {
+  top: 51px;
+  right: 29px;
+}
+.fixed-toolbar .profile-card-content {
+  padding: 20px;
+}
+.fixed-toolbar .profile-card-content .profile-picture {
+  display: inline-block;
+  height: 96px;
+}
+.fixed-toolbar .profile-card-content .profile-picture .missing-picture {
+  height: 96px;
+  display: inline-block;
+  border-radius: 96px;
+  background-color: #d6ad79;
+}
+.fixed-toolbar .profile-card-content .profile-picture .missing-picture span {
+  display: inline-block;
+  font-size: 62px;
+  width: 98px;
+  padding: 10px 25px;
+  text-align: center;
+}
+.fixed-toolbar .profile-card-content .profile-description {
+  color: black;
+  display: inline-block;
+  padding-left: 5px;
+}
+.fixed-toolbar .profile-card-content .profile-description .name {
+  display: block;
+  width: 169px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 5px 0 5px 0;
+}
+.fixed-toolbar .profile-card-content .profile-description .identity {
+  display: block;
+  color: #666;
+  font-size: 13px;
+}
+.fixed-toolbar .profile-card-content .profile-button {
+  height: 28px;
+  cursor: default;
+  font-size: 13px;
+  text-decoration: none;
+  background: #4d90fe;
+  border: 1px solid #3079ed;
+  font-weight: bold;
+  margin: 16px 0 0 0;
+  color: #fff;
+  display: inline-block;
+  line-height: 28px;
+  padding: 0 14px;
+  border-radius: 2px;
+}
+.fixed-toolbar .profile-card-content .profile-button:hover {
+  height: 28px;
+  cursor: default;
+  font-size: 13px;
+  text-decoration: none;
+  background: #357ae8;
+  border: 1px solid #2f5bb7;
+  font-weight: bold;
+  margin: 16px 0 0 0;
+  color: #fff;
+  display: inline-block;
+  line-height: 28px;
+  padding: 0 14px;
+  border-radius: 2px;
+}
+.fixed-toolbar .profile-card-footer {
+  width: 322px;
+  height: 50px;
+  padding: 10px 0px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: whitesmoke;
+}
+.fixed-toolbar .profile-card-footer md-button {
+  color: #874639;
+}
+.fixed-toolbar .profile-card-footer .close-session {
+  color: #666;
+  cursor: default;
+  text-decoration: none;
+  background: #f8f8f8;
+  border: 1px solid #c6c6c6;
+  line-height: 28px;
+  padding: 0 12px;
+  border-radius: 2px;
+  font-size: 13px;
+  margin-right: 23px;
+}

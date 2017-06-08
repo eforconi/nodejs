@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/dist/style.css">
     <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" type="text/css" href="angular.treeview-master/css/angular.treeview.css">
+    <link rel="stylesheet" href="/components/toolbar.css">
+    <link rel="stylesheet" href="/dist/style.css">
+
 
 
     <!-- ICONOS -->
@@ -14,6 +17,8 @@
       rel="stylesheet">
   </head>
   <body class="background-gray">
+  <div class="toolbar">
+    </div>
     <div ui-view class="full-size">
     </div>
     <!-- <script type="text/javascript" src='/bower_components/jquery/dist/jquery.min.js' ></script> -->
@@ -31,12 +36,19 @@
 
     <script type="text/javascript" src='/core/core.module.js'></script>
     <script type="text/javascript" src='/core/core.route.js'></script>
-    
+
+    <script type="text/javascript" src='/components/components.module.js' ></script>
+    <script type="text/javascript" src='/components/toolbar.directive.js' ></script>
+
     <script type="text/javascript" src='/visual/visual.module.js'></script>
     <script type="text/javascript" src='/visual/visual.route.js'></script>
     <script type="text/javascript" src='/visual/visual.controller.js'></script>
+
     <script type="text/javascript" src='/app.module.js'></script>
     <script type="text/javascript" src='/angular.treeview-master/angular.treeview.js'></script>
+
+
+
     <!--Json editor-->
 
   </body>

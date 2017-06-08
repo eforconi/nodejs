@@ -3,5 +3,5 @@
     'use strict';
 
     angular
-        .module('visual', ['angularTreeview']);
+        .module('visual', ['angularTreeview','components']);
 })();
