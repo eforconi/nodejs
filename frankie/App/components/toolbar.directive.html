@@ -1,12 +1,14 @@
 <md-toolbar class="fixed-toolbar" md-whiteframe="2" >
   <div class="md-toolbar-tools">
-    <md-button class="md-icon-button"  aria-label="GoBack" ng-click="vm.toggle()"><!--ng-disabled="!vm.back"-->
+    <!--
+    <md-button class="md-icon-button"  aria-label="GoBack" ng-click="">
       <md-icon class="material-icons">menu</md-icon>
     </md-button>
+    --><!--ng-disabled="!vm.back"-->
     <img style="width: 40px;margin-right: 2px;max-width: 40px;cursor:pointer;" src="/images/unc-logo.png" ui-sref="modules">
     &nbsp;&nbsp;
     <h2>
-      <span>{{vm.text}}</span>
+      <span>API of APIs</span>
     </h2>
     <span flex></span>
 
@@ -51,20 +53,20 @@
     </div>
     <div id="arrow-up-apps"></div>
 
-    <div id='display-profile-button' class="session-button" layout='column' layout-align='center center' ng-click='vm.showProfile($event)'>
-      <div id='profile-icon' >{{vm.initialCapitalLetter}}</div>
+    <div id='display-profile-button' class="session-button display-profile-button" layout='column' layout-align='center center' ng-click='vm.showProfile($event)'>
+      <div id='profile-icon' ></div>
     </div>
 
     <div id="profile-card" class="md-whiteframe-4dp">
       <div class="profile-card-content" layout='row'>
         <div class="profile-picture" flex='40'>
           <div class="missing-picture">
-              <span>{{vm.initialCapitalLetter}}</span>
+              <span>Missing</span>
           </div>
         </div>
         <div class="profile-description" flex='60'>
-          <span class="name">Nombre y Apellido{{vm.fullname}}</span>
-          <span class="identity">Datos Comdoc{{vm.description}}</span>
+          <span class="name">Nombre y Apellido</span>
+          <span class="identity">Datos Comdoc</span>
           <!-- <a class="profile-button" ui-sref="profile">Mi Perfil</a> -->
         </div>
       </div>

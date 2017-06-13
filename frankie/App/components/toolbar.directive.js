@@ -61,10 +61,10 @@
         }
     }
 
-    ToolbarController.$inject = ['yacareFactory', '$state', '$mdToast', '$scope', 'toolbarFactory'];
+    ToolbarController.$inject = ['$state', '$mdToast', '$scope', 'toolbarFactory'];
 
     /* @ngInject */
-    function ToolbarController(yacareFactory, $state, $mdToast, $scope, toolbarFactory) {
+    function ToolbarController($state, $mdToast, $scope, toolbarFactory) {
 
       var vm = this;
 
@@ -110,7 +110,7 @@
 
       function closeSession() {
         toolbarFactory.deleteStack();
-        yacareFactory.logout().then(
+        /*yacareFactory.logout().then(
           function(response){
             $state.go(
               'login'
@@ -124,7 +124,7 @@
                 .hideDelay(3000)
             );
           }
-        );
+        );*/
       }
 
       // muestra la tarjeta de modulos

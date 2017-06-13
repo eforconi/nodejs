@@ -1,8 +1,11 @@
-#tabDiv{
-
-    margin-left: 7%;
-    border-left-style: solid;
-    border-left-width: 1px;
+.tabDiv{
+    margin-left: 5px;
+    width: 73%;
+    height: 96.8%;
+}
+.tabDivCard{
+    width: 100%;
+    height: 100%;
 }
 
 #navDiv{
@@ -12,20 +15,24 @@
 }
 
 .leftColumnDiv{
-	margin-left: 7%;
-	margin-right: 3%;
-	width: 15%;
+	margin-left: 5px;
+    width: 25%;
     }
 .selectApi{
-    width: 20%;
+    width: 120px;
 }
 
 
-#gralInfo{
-    margin-left: 3%;
-    border-bottom-color: black;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
+.gralInfo{
+ display:flex;
+}
+.gralInfo1 {
+    font-size: 13pt;
+    margin-bottom: 8px;
+}
+.gralInfo2{
+    font-size: 11pt;
+    margin-top: 3px;
 }
 
 #responseBox{
@@ -34,16 +41,14 @@
     width: 190%;
 }
 
-#gralInfoTitle {
-    margin-left: 35%;
-}
-
 #paramsBox{
 	display: none;
     width: 60%;
 }
 #leftContent{
-    width: 50%;
+    width: 35%;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 #rightContent{
     width: 50%;
@@ -54,6 +59,148 @@
 #requestContent{
 	width: 150%;
 }
-#paramsJsonEditor{
-	
+
+.md-toolbar-tools{
+    background-color: #9fd2f1;
+}
+
+.display-profile-button{
+    position:fixed;
+    right: 5px;
+    top: 15px;
+}
+
+.apiSelectDiv{
+    justify-content: flex-start;
+}
+
+.infoCard{
+    flex: 0 0 100%;
+}
+
+.conteinerSelectApiDiv{
+    padding-left: 10px;
+}
+
+.titleConteinerDiv{
+    padding-left: 30%;
+}
+
+.gralInfoDiv{
+    justify-content: space-around;
+}
+
+.verbPost{
+   color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #e7f6ec;
+    border: 1px solid #c3e8d1;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px; 
+}
+
+.postText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #10a54a;
+    color: white;
+    padding: 0;
+    width: 10%;
+    height: 30px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+.verbGet{
+   color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #e7f0f7;
+    border: 1px solid #c3d9ec;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px; 
+}
+
+.getText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0f6ab4;
+    color: white;
+    padding: 0;
+    width: 10%;
+    height: 30px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.verbPut{
+   color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #f9f2e9;
+    border: 1px solid #f0e0ca;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px; 
+}
+
+.putText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c5862b;
+    color: white;
+    padding: 0;
+    width: 10%;
+    height: 30px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.verbDelete{
+   color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #f5e8e8;
+    border: 1px solid #e8c6c7;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px; 
+}
+
+.deleteText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #a41e22;
+    color: white;
+    padding: 0;
+    width: 10%;
+    height: 30px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/*html { overflow: hidden; }*/
+
+#indexDiv,{
+    height: 100%;
+}
+
+.outSideDiv .leftColumnCard{
+    height: 100%;
 }
