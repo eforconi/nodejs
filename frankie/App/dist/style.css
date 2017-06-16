@@ -7,11 +7,19 @@
     width: 100%;
     height: 100%;
 }
+.treeConteiner{
+    background: white;
+}
+
+.listConteiner{
+    background: white;
+}
 
 #navDiv{
 	width: 150%;
 	margin-left: 3%;
 	display: none;
+    background: white;  
 }
 
 .leftColumnDiv{
@@ -37,7 +45,7 @@
 
 #responseBox{
 	display: none;
-    background: lightgreen;
+    background: none;
     width: 190%;
 }
 
@@ -47,17 +55,36 @@
 }
 #leftContent{
     width: 35%;
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
 }
 #rightContent{
-    width: 50%;
+    width: 25%;
+    height: 100%;
+    display: none;
+}
+
+.jsoneditor-outer{
+    min-width: 250px;
+    min-height: 250px;
+}
+.jsonEditorDiv{
+    margin-top: 50px;
+}
+.tabBackgroud{
+    background: white;
+    overflow: auto;
+}
+ .md-nav-bar{
+    background: white;
 }
 #responseValues{
 	width: 190%;
+    background: white;
 }
 #requestContent{
 	width: 150%;
+    background: white;
 }
 
 .md-toolbar-tools{
@@ -203,4 +230,19 @@
 
 .outSideDiv .leftColumnCard{
     height: 100%;
+}
+.jsonParamInfo{
+    margin: 5px;
+}
+#rightRequestParams{
+    height: 100%
+}
+.paramName{
+    font-weight: bold;
+}
+.responseMsj{
+    border-radius: 15px;
+}
+.bodyInput{
+    
 }

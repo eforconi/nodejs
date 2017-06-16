@@ -16,12 +16,12 @@
 				    </md-input-container>
 			    </div>
 			    <div class="titleConteinerDiv">
-			    	<h1 id="gralInfoTitle">UNC DOCUMENTATION API</h1>
+			    	<h2 id="gralInfoTitle">UNC DOCUMENTATION API</h2>
 			    </div>
 		    </div>  
 			<div layout="row" class="gralInfoDiv">
-				<div class="gralInfo1">{{vi.json.info.description}}</div>
-				<div class="gralInfo2">{{vi.json.info.title}}</div>
+				<div class="gralInfo1">Descrip: {{vi.json.info.description}}</div>
+				<div class="gralInfo2">Descrip 2: {{vi.json.info.title}}</div>
 		    </div>
 		    </md-card>     
 		</div>
@@ -30,7 +30,7 @@
 				<md-card class="leftColumnCard">
 					<md-tabs md-dynamic-height md-border-bottom>
 				      <md-tab label="Árbol">
-				        <md-content class="md-padding">
+				        <md-content class="treeConteiner">
 				        	<div  id="tree">
 								<div
 								data-angular-treeview="true"
@@ -45,7 +45,7 @@
 				        </md-content>
 				      </md-tab>
 				      <md-tab label="Lista">
-				        <md-content class="md-padding">
+				        <md-content class="md-padding listConteiner">
 				          <div ng-repeat='(key,val) in vi.json.paths' ng-click='vi.showVerbs(key,val)'>
 				          	{{key}}
 				          </div>
@@ -96,17 +96,59 @@
 							Try it out
 						</md-nav-item>
 					</md-nav-bar>
-				<div class="ext-content" layout=row>
+				<div layout=row class="tabBackgroud">
 					<div id="leftContent">
-						<h2>{{vi.actualPath}}</h2>
-						<h2>{{vi.con}}</h2> 
-						<h5>{{vi.precon2}}{{vi.con2}}</h5>
-						<h5>{{vi.precon3}}{{vi.con3}}</h5>
-						<div ng-cloak layout-gt-sm="row" layout="column">
+						<div id="endpointInfo">
+							<h2>{{vi.actualPath}}</h2>
+							<h2>{{vi.con}}</h2> 
+							<h5>Descrpcion: {{vi.con2}}</h5>
+							<h5>Operacion: {{vi.con3}}</h5><br>
+							<h3>Parametros</h3>
+							<div ng-repeat='req in vi.auxVal.parameters'>
+									<br> 	
+									<div ng-switch="req.in">
+										<!--Body-->
+										<div ng-switch-when="body" layout="row">
+											<div id="rightRequestParams">
+												<div class="paramName">Parameter: {{req.name}}</div>
+												<div>Parameter type: {{req.in}}</div>
+												<div>Data type: {{req.type}}</div><br>
+												<angular-jsoneditor ng-model="vi.actualRef" id="paramsJsonEditor" class="jsonParamInfo"></angular-jsoneditor>
+											</div>
+										</div>
+										<!--header-->
+										<div ng-switch-when="header" layout="row">
+											<div id="rightRequestParams">
+												<div class="paramName">Parameter: {{req.name}}</div>
+												<div>Parameter type: {{req.in}}</div>
+												<div>Data type: {{req.type}}</div>
+											</div>
+										</div>
+										<!--Query-->
+										<div ng-switch-when="query" layout="row">
+											<div id="rightRequestParams">
+												<div class="paramName">Parameter: {{req.name}}</div>
+												<div>Parameter type: {{req.in}}</div>
+												<div>Data type: {{req.type}}</div>
+											</div>
+										</div>
+										<!--path-->
+										<div ng-switch-when="path" layout="row">
+											<div id="rightRequestParams">
+												<div class="paramName">Parameter: {{req.name}}</div>
+												<div>Parameter type: {{req.in}}</div>
+												<div>Data type: {{req.type}}</div>
+											</div>
+										</div>
+										<div ng-switch-default></div>
+									</div>
+								</div>
+						</div>
+						<div layout-gt-sm="row" layout="column">
 							<div id="responsesDiv">		
 								<div flex-gt-sm="50" flex>
-									<md-toolbar layout="row" class="md-hue-3" id="responseBox">
-										<div class="md-toolbar-tools">
+									<md-toolbar layout="row" id="responseBox">
+										<div class="md-toolbar-tools" class="responseMsj">
 											<span>{{vi.spanResponse}}</span>
 										</div>
 									</md-toolbar>
@@ -120,6 +162,7 @@
 							</div>	
 						</div>
 						<div id="requestDiv">
+							<form ng-submit="vi.visualFactory.tryPromise()">
 							<div id="paramsBox">
 									<h4 class="md-flex">Request Params</h4>
 							</div>
@@ -127,84 +170,76 @@
 								<div ng-repeat='req in vi.auxVal.parameters'> 	
 									<div ng-switch="req.in">
 										<!--Body-->
-										<div ng-switch-when="body" layout="row">
+										<div ng-switch-when="body" layout="column">
 											<div id="rightRequestParams">
-												<h6>Parameter: {{req.name}}</h6>
+												<div>Parameter: {{req.name}}</div>
+												<div>Parameter type: {{req.in}} </div>
+												<div>Data type: Json</div>
 												<div ng-if="req.required == true">
-													<textarea class="required" name="inputBodyRequest" id="text" rows="10" cols="20" placeholder="Required"></textarea>
+													<textarea ng-model="vi.bodyParamsArray[$index]" class="required" name="inputBodyRequest" id="text" rows="10" cols="20" placeholder="Required"></textarea>
 												</div>
-												<div ng-if="req.required == false">
-													<textarea name="inputBodyRequest" id="text" rows="10" cols="20" placeholder="Not required"></textarea>
+												<div ng-if="req.required == false">													
+												<textarea ng-model="vi.paramsArray[$index]" name="inputBodyRequest" id="text" rows="10" cols="20" placeholder="Not required"></textarea>
 												</div>
-											</div>
-											<div id="leftRequestParams">
-												<h6>parameter type: {{req.in}} 	Data type: {{req.type}}</h6>
-												<angular-jsoneditor ng-model="vi.actualRef" id="paramsJsonEditor"></angular-jsoneditor>
-
 											</div>
 										</div>
 										<!--header-->
-										<div ng-switch-when="header" layout="row">
+										<div ng-switch-when="header" layout="column">
 											<div id="rightRequestParams">
-												<h6>Parameter: {{req.name}}</h6>
+												<div>Parameter: {{req.name}}</div>
+												<div>parameter type: {{req.in}}</div>
+												<div>Data type: {{req.type}}</div>
 												<div ng-if="req.required == true">
-													<textarea class="required" name="inputHeaderRequest" id="text" placeholder="Required">
+													<textarea ng-model="vi.headerParamsArray[$index]" class="required" name="inputHeaderRequest" id="text" placeholder="Required">
 													</textarea>
 												</div>
 												<div ng-if="req.required == false">
-													<textarea name="inputHeaderRequest" id="text" placeholder="Not required"></textarea>
+													<textarea ng-model="vi.headerParamsArray[$index]" name="inputHeaderRequest" id="text" placeholder="Not required"></textarea>
 												</div>
-											</div>
-											<div id="leftRequestParams">
-												<h6>parameter type: {{req.in}}</h6>
-												<h6>Data type: {{req.type}}</h6>
 											</div>
 										</div>
 										<!--Query-->
-										<div ng-switch-when="query" layout="row">
+										<div ng-switch-when="query" layout="column">
 											<div id="rightRequestParams">
-												<h6>Parameter: {{req.name}}</h6>
+												<div>Parameter: {{req.name}}</div>
+												<div>parameter type: {{req.in}}</div>
+												<div>Data type: {{req.type}}</div>
 												<div ng-if="req.required == true">
-													<textarea class="required" name="inputQueryRequest" id="text" placeholder="Required"></textarea>
+													<textarea ng-model="vi.queryParamsArray[$index]" class="required" name="inputQueryRequest" id="text" placeholder="Required"></textarea>
 												</div>
 												<div ng-if="req.required == false">
-													<textarea name="inputQueryRequest" id="text" placeholder="Not required"></textarea>
+													<textarea ng-model="vi.queryParamsArray[$index]" name="inputQueryRequest" id="text" placeholder="Not required"></textarea>
 												</div>
-											</div>
-											<div id="leftRequestParams">
-												<h6>parameter type: {{req.in}}</h6>
-												<h6>Data type: {{req.type}}</h6>
 											</div>
 										</div>
 										<!--path-->
-										<div ng-switch-when="path" layout="row">
+										<div ng-switch-when="path" layout="column">
 											<div id="rightRequestParams">
-												<h6>Parameter: {{req.name}}</h6>
+												<div>Parameter: {{req.name}}</div>
+												<div>Parameter type: {{req.in}}</div>
+												<div>Data type: {{req.type}}</div>
 												<div ng-if="req.required == true">
-													<textarea class="required" name="inputPathRequest" id="text" placeholder="Required"></textarea>
+													<textarea ng-model="vi.pathParamsArray[$index]" class="required" name="inputPathRequest" id="text" placeholder="Required"></textarea>
 												</div>
 												<div ng-if="req.required == false">
-													<textarea name="inputPathRequest" id="text" placeholder="Not required"></textarea>
+													<textarea ng-model="vi.pathParamsArray[$index]" name="inputPathRequest" id="text" placeholder="Not required"></textarea>
 												</div>
-											</div>
-											<div id="leftRequestParams">
-												<h6>parameter type: {{req.in}}</h6>
-												<h6>Data type: {{req.type}}</h6>
 											</div>
 										</div>
 										<div ng-switch-default></div>
 									</div>
 								</div>	
 							</md-content>
-						</div>
-						<div>
-							<md-button class="md-raised md-primary">Try it out!</md-button>
+								<md-button class="md-raised md-primary" aria-label="Buscar" type="submit">
+				 					Try it out
+			 					</md-button>
+							</form>
 						</div>
 					</div>
-					<div id="rightContent">
-						<div layout="column" ng-cloak>
-							<div>{{vi.actualErrorCode.type}}</div>	
-						</div>
+					<div id="rightContent" layout="row" layout-align="center center">
+						<div class="jsonEditorDiv">
+							<angular-jsoneditor ng-model="vi.actualErrorCode" id="paramsJsonEditor" class="errorCodeJson"></angular-jsoneditor>
+						</div>	
 					</div>
 				</div>
 				</md-content>
