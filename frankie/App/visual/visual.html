@@ -162,7 +162,7 @@
 							</div>	
 						</div>
 						<div id="requestDiv">
-							<form ng-submit="vi.visualFactory.tryPromise()">
+							<form ng-submit="vi.tryPromise(vi.promiseForm)">
 							<div id="paramsBox">
 									<h4 class="md-flex">Request Params</h4>
 							</div>
@@ -176,10 +176,10 @@
 												<div>Parameter type: {{req.in}} </div>
 												<div>Data type: Json</div>
 												<div ng-if="req.required == true">
-													<textarea ng-model="vi.bodyParamsArray[$index]" class="required" name="inputBodyRequest" id="text" rows="10" cols="20" placeholder="Required"></textarea>
+													<textarea ng-model="vi.promiseForm.bodyParamsArray[vi.pathBody()]" class="required" name="inputBodyRequest" id="text" rows="10" cols="20" placeholder="Required"></textarea>
 												</div>
 												<div ng-if="req.required == false">													
-												<textarea ng-model="vi.paramsArray[$index]" name="inputBodyRequest" id="text" rows="10" cols="20" placeholder="Not required"></textarea>
+												<textarea ng-model="vi.promiseForm.paramsArray[vi.pathBody()]" name="inputBodyRequest" id="text" rows="10" cols="20" placeholder="Not required"></textarea>
 												</div>
 											</div>
 										</div>
@@ -190,11 +190,11 @@
 												<div>parameter type: {{req.in}}</div>
 												<div>Data type: {{req.type}}</div>
 												<div ng-if="req.required == true">
-													<textarea ng-model="vi.headerParamsArray[$index]" class="required" name="inputHeaderRequest" id="text" placeholder="Required">
+													<textarea ng-model="vi.promiseForm.headerParamsArray[vi.pathHeader()]" class="required" name="inputHeaderRequest" id="text" placeholder="Required">
 													</textarea>
 												</div>
 												<div ng-if="req.required == false">
-													<textarea ng-model="vi.headerParamsArray[$index]" name="inputHeaderRequest" id="text" placeholder="Not required"></textarea>
+													<textarea ng-model="vi.promiseForm.headerParamsArray[vi.pathHeader()]" name="inputHeaderRequest" id="text" placeholder="Not required"></textarea>
 												</div>
 											</div>
 										</div>
@@ -205,10 +205,10 @@
 												<div>parameter type: {{req.in}}</div>
 												<div>Data type: {{req.type}}</div>
 												<div ng-if="req.required == true">
-													<textarea ng-model="vi.queryParamsArray[$index]" class="required" name="inputQueryRequest" id="text" placeholder="Required"></textarea>
+													<textarea ng-model="vi.promiseForm.queryParamsArray[vi.pathQuery()]" class="required" name="inputQueryRequest" id="text" placeholder="Required"></textarea>
 												</div>
 												<div ng-if="req.required == false">
-													<textarea ng-model="vi.queryParamsArray[$index]" name="inputQueryRequest" id="text" placeholder="Not required"></textarea>
+													<textarea ng-model="vi.promiseForm.queryParamsArray[vi.pathQuery()]" name="inputQueryRequest" id="text" placeholder="Not required"></textarea>
 												</div>
 											</div>
 										</div>
@@ -219,10 +219,10 @@
 												<div>Parameter type: {{req.in}}</div>
 												<div>Data type: {{req.type}}</div>
 												<div ng-if="req.required == true">
-													<textarea ng-model="vi.pathParamsArray[$index]" class="required" name="inputPathRequest" id="text" placeholder="Required"></textarea>
+													<textarea ng-model="vi.promiseForm.pathParamsArray[vi.pathIndex()]" class="required" name="inputPathRequest" id="text" placeholder="Required"></textarea>
 												</div>
 												<div ng-if="req.required == false">
-													<textarea ng-model="vi.pathParamsArray[$index]" name="inputPathRequest" id="text" placeholder="Not required"></textarea>
+													<textarea ng-model="vi.promiseForm.pathParamsArray[$index]" name="inputPathRequest" id="text" placeholder="Not required"></textarea>
 												</div>
 											</div>
 										</div>
@@ -230,7 +230,7 @@
 									</div>
 								</div>	
 							</md-content>
-								<md-button class="md-raised md-primary" aria-label="Buscar" type="submit">
+								<md-button class="md-raised md-primary" aria-label="Buscar"  type="submit">
 				 					Try it out
 			 					</md-button>
 							</form>

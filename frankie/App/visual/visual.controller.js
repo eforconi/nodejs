@@ -10,6 +10,8 @@
     visualController.$inject = ['$scope','visualFactory'];
     visualFactory.$inject = ['$http'];
 
+
+
     function visualFactory($http) {
         var service = {
         getOrganizations : getOrganizations,
@@ -31,15 +33,34 @@
             return $http.get(url);
         }
 
-        function tryPromise(){
+        function tryPromise(form){
+
             console.log("paso try");
+            console.log("Parametros",form);
+            var pathArray=form.path.split("/");
+            console.log("arrayParam",pathArray);
+            var pathVarAux=0,auxPath="'http://localhost:4567";
+            for (var val in pathArray){
+                if(pathArray[val]!="{id}"){
+                    if(pathArray[val]!=""){
+                        console.log("asd",pathArray[val]);
+                        auxPath+="/"+pathArray[val];
+                    }
+                }else{
+                    console.log("parametro path",form.pathParamsArray);
+                    auxPath+="/"+form.pathParamsArray[pathVarAux];
+                    pathVarAux++;
+                }
+            }
+            console.log("path listo",auxPath);
+
              var req = {
-                 method: vi.actualKey.toUpperCase,
-                 url: 'http://localhost:4567/'+vi.auxPath,
+                 method: form.verv.toUpperCase,
+                 url: auxPath,
                  headers: {
-                   'Content-Type': undefined
+                   'Content-Type': "application/json"
                  },
-                 data: {
+                 data: { 
                           "name": "string",
                           "lastname": "string",
                           "phoneNumber": "string",
@@ -50,7 +71,7 @@
            
                 return $http(req).then(
                 function (response) {
-                    console.log("JSON", response);
+                    console.log("TRY-JSON", response);
                 },
                 function(response){
                     console.log("ERROR: ", response);
@@ -62,6 +83,8 @@
     /* @ngInject */
     function visualController($scope,visualFactory) {
         var vi = this;
+        vi.tryPromise = visualFactory.tryPromise;
+        vi.promiseForm={};
         var actualVerb=[], apiList, apiSelected,swaggerJson, role=true;
         var auxPath,actualKey,auxVal,printTree,auxGlobal = 0,limitGlobal = 0,tree = [],actualRef = {},bodyName, auxValResponses,actualErrorCode;
         vi.paramsArray=[];
@@ -218,6 +241,10 @@
             document.getElementById("responsesDiv").style.display = "none";
             document.getElementById("rightContent").style.display="none";
             document.getElementById("requestDiv").style.display = "block";
+
+            vi.promiseForm.path=vi.auxPath;
+            vi.promiseForm.verv=vi.actualKey;
+            console.log("para el ale",vi.auxVal.parameters);
            //  vi.cleanFunction();
 
            // var url='http://localhost:4567/swagger';
@@ -308,6 +335,26 @@
         //         });
             
         // }
+        var auxPath=-1;
+        vi.pathIndex = function(){
+            auxPath++;
+            return 0;
+        }
+        var auxBody=-1;
+        vi.pathBody = function(){
+            auxBody++;
+            return 0;
+        }
+        var auxQuery=-1;
+        vi.pathQueryx = function(){
+            auxQuery++;
+            return 0;
+        }
+        var auxHeader=-1;
+        vi.pathHeader = function(){
+            auxHeader++;
+            return 0;
+        }
 
         function mkNode(name,j){
             var oj = {
