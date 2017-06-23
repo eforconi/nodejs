@@ -7,12 +7,12 @@
         .factory('visualFactory', visualFactory);
         
 
-    visualController.$inject = ['$scope','visualFactory'];
+    visualController.$inject = ['$scope','visualFactory','$mdToast'];
     visualFactory.$inject = ['$http'];
 
 
 
-    function visualFactory($http) {
+    function visualFactory($http,$mdToast) {
         var service = {
         getOrganizations : getOrganizations,
         getApisList : getApisList,
@@ -34,12 +34,17 @@
         }
 
         function tryPromise(form){
-
-            console.log("paso try");
-            console.log("Parametros",form);
+         var msg = fieldsControl(profile);    
+        if(msg!=null){
+             $mdToast.show(
+              $mdToast.simple()
+              .textContent(msg)
+              .hideDelay(3500)
+            );
+        }
+        else{
             var pathArray=form.path.split("/");
-            console.log("arrayParam",pathArray);
-            var pathVarAux=0,auxPath="'http://localhost:4567";
+            var pathVarAux=0,auxPath='http://localhost:4567';
             for (var val in pathArray){
                 if(pathArray[val]!="{id}"){
                     if(pathArray[val]!=""){
@@ -52,20 +57,18 @@
                     pathVarAux++;
                 }
             }
+            if(form.queryParamsArray!=""){
+            //Terminar, es un form y armar bien la query    
+            var queryParams=form.queryParamsArray;
+            auxPath+=queryParams;
+            }
             console.log("path listo",auxPath);
-
+            var method = form.verv.toUpperCase();
              var req = {
-                 method: form.verv.toUpperCase,
+                 method: method,
                  url: auxPath,
-                 headers: {
-                   'Content-Type': "application/json"
-                 },
-                 data: { 
-                          "name": "string",
-                          "lastname": "string",
-                          "phoneNumber": "string",
-                          "bloodType": "ABNeg"
-                        }
+                 headers: form.headerParamsArray,
+                 data: form.bodyParamsArray
                 }
 
            
@@ -76,6 +79,7 @@
                 function(response){
                     console.log("ERROR: ", response);
                 });
+            }    
         }
 
     }
@@ -354,6 +358,12 @@
         vi.pathHeader = function(){
             auxHeader++;
             return 0;
+        }
+        var exampleJson;
+
+        vi.clickJson = function(){
+            document.getElementById("bodyTextArea").value = JSON.stringify(vi.actualRef);
+            console.log(vi.exampleJson);
         }
 
         function mkNode(name,j){
